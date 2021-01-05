@@ -51,6 +51,11 @@ Given('code in a rules file') do |doc_string|
   @rule = doc_string_to_rule(doc_string)
 end
 
+Given('code in a deployed rules file') do |doc_string|
+  @rule = doc_string_to_rule(doc_string)
+  deploy_rule
+end
+
 When('I deploy the rules file') do
   deploy_rule
 end

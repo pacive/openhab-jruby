@@ -162,3 +162,32 @@ Feature:  Rule languages supports groups
       """
     When I deploy the rules file
     Then It should log "SwitchTest Received Update" within 5 seconds
+
+  Scenario: Send update to an item
+    Given a deployed rule:
+      """
+      rule 'Item Updated' do
+        updated SwitchTest, to: OFF
+        run { logger.info("SwitchTest Received Update") }
+      end
+      """
+    And code in a rules file
+      """
+      SwitchTest.update OFF
+      """
+    When I deploy the rules file
+    Then It should log "SwitchTest Received Update" within 5 seconds
+
+  Scenario: Items support arbitrary attachments
+    Given code in a deployed rules file
+      """
+      SwitchTest[:foo] = 'bar'
+      """
+    And code in a rules file
+      """
+      logger.info("Attachment is #{SwitchTest[:foo]}")
+      """
+    When I deploy the rules file
+    Then It should log "Attachment is bar" within 5 seconds
+
+

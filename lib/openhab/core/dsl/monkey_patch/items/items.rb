@@ -75,4 +75,15 @@ end
 class Java::OrgOpenhabCoreItems::GenericItem
   # rubocop:enable Style/ClassAndModuleChildren
   prepend OpenHAB::Core::DSL::MonkeyPatch::Items::ItemExtensions
+
+  def [] key
+    $item_attachments ||= {}
+    $item_attachments[key]
+  end
+
+  def []= key, obj
+    $item_attachments ||= {}
+    $item_attachments[key] = obj
+  end
+
 end
