@@ -61,7 +61,7 @@ module OpenHAB
             @on_start
           end
 
-          def my(&block)
+          def rule_var(&block)
             @caller.instance_eval(&block)
           end
         end
