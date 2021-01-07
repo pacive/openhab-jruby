@@ -25,7 +25,8 @@ module OpenHAB
           class Guard
             include Logging
 
-            def initialize(only_if: nil, not_if: nil)
+            def initialize(file_context:, only_if: nil, not_if: nil)
+              @file_context = file_context
               @only_if = only_if
               @not_if = not_if
             end
@@ -51,9 +52,9 @@ module OpenHAB
 
               case check_type
               when :only_if
-                items.all?(&:truthy?) && procs.all? { |proc| proc.call(event) }
+                items.all?(&:truthy?) && procs.all? { |proc| @file_context.instance_exec event, &proc }
               when :not_if
-                items.none?(&:truthy?) && procs.none? { |proc| proc.call(event) }
+                items.none?(&:truthy?) && procs.none? { |proc| @file_context.instance_exec event, &proc } 
               else
                 raise "Unexpected check type: #{check_type}"
               end

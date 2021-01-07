@@ -29,7 +29,7 @@ module OpenHAB
 
           java_import org.openhab.core.library.items.SwitchItem
 
-          attr_reader :triggers, :trigger_delays
+          attr_reader :triggers, :trigger_delays, :file_context, :name, :between
 
           Run = Struct.new(:block)
           Trigger = Struct.new(:block)
@@ -50,7 +50,7 @@ module OpenHAB
             @trigger_delays = {}
             @enabled = true
             @on_start = false
-            @caller = caller_binding.eval 'self'
+            @file_context = caller_binding.eval 'self'
           end
 
           def on_start(run_on_start = true)
@@ -62,7 +62,7 @@ module OpenHAB
           end
 
           def my(&block)
-            @caller.instance_eval(&block)
+            @file_context.instance_eval(&block)
           end
         end
 
@@ -81,7 +81,7 @@ module OpenHAB
           logger.trace { "Trigger Waits #{config.trigger_delays}" }
 
           if config.enabled
-            rule = Rule.new(name: config.name, run_queue: config.run_queue, guard: guard, between: config.between, trigger_delays: config.trigger_delays)
+            rule = Rule.new(config: config, guard: guard)
             rule.set_triggers(config.triggers)
             am = $scriptExtension.get('automationManager')
             am.addRule(rule)
@@ -98,13 +98,14 @@ module OpenHAB
 
           using OpenHAB::Core::DSL::Tod::TimeOfDayRange
 
-          def initialize(name:, run_queue:, guard:, between:, trigger_delays:)
+          def initialize(config:, guard:)
             super()
             setName(name)
-            @run_queue = run_queue
+            @run_queue = config.run_queue
             @guard = guard
-            @between = between || OpenHAB::Core::DSL::Tod::TimeOfDayRange::ALL_DAY
-            @trigger_delays = trigger_delays
+            @between = config.between || OpenHAB::Core::DSL::Tod::TimeOfDayRange::ALL_DAY
+            @trigger_delays = config.trigger_delays
+            @file_context = config.file_context
           end
 
           # Returns trigger delay from inputs if it exists
@@ -201,13 +202,13 @@ module OpenHAB
                 event = inputs&.dig('event')
 
                 logger.trace { "Executing rule '#{name}' run block with event(#{event})" }
-                task.block.call(event)
+                @file_context.instance_exec event, &task.block
               when RuleConfig::Trigger
 
                 triggering_item = $ir.get(inputs&.dig('event')&.itemName)
 
                 logger.trace { "Executing rule '#{name}' trigger block with item (#{triggering_item})" }
-                task.block.call(triggering_item) if triggering_item
+                @file_context.instance_exec triggering_item, &task.block if triggering_item
 
               when RuleConfig::Delay
                 remaining_queue = run_queue.slice!(0, run_queue.length)
@@ -216,7 +217,7 @@ module OpenHAB
               when RuleConfig::Otherwise
                 event = inputs&.dig('event')
                 logger.trace { "Executing rule '#{name}' otherwise block with event(#{event})" }
-                task.block.call(event)
+                @file_context.instance_exec event, &task.block
 
               end
             end
