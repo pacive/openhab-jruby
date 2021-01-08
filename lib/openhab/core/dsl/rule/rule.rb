@@ -74,7 +74,7 @@ module OpenHAB
             return if config.triggers.empty?
           end
 
-          guard = Guard::Guard.new(only_if: config.only_if, not_if: config.not_if)
+          guard = Guard::Guard.new(file_context: @file_context, only_if: config.only_if, not_if: config.not_if)
 
           logger.trace { "Triggers: #{config.triggers} Guard: #{guard} Runs: #{config.run} on_start: #{config.on_start?}" }
           config.triggers.each { |trigger| logger.trace { "Trigger UID: #{trigger.id}" } }

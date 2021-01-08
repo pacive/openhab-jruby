@@ -54,7 +54,7 @@ module OpenHAB
               when :only_if
                 items.all?(&:truthy?) && procs.all? { |proc| @file_context.instance_exec event, &proc }
               when :not_if
-                items.none?(&:truthy?) && procs.none? { |proc| @file_context.instance_exec event, &proc } 
+                items.none?(&:truthy?) && procs.none? { |proc| @file_context.instance_exec event, &proc }
               else
                 raise "Unexpected check type: #{check_type}"
               end
