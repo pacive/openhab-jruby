@@ -184,3 +184,54 @@ Feature:  Openhab Gem Support
       """
     When I deploy the rule
     Then It should log 'foo is defined: false' within 5 seconds
+
+  Scenario: global variables are available between rules
+    Given a rule
+      """
+      $foo = 'baz'
+
+      rule 'set variable' do
+        on_start
+        run do
+          $foo = 'bar'
+          logger.info("$Foo set to #{ $foo }")
+        end
+      end
+
+      rule 'read variable' do
+        on_start
+        delay 2.seconds
+        run do
+         logger.info("$foo is bar: #{ $foo == 'bar' }")
+        end
+      end
+      """
+    When I deploy the rule
+    Then It should log '$foo is bar: true' within 5 seconds
+
+
+  Scenario: global variables are shared between rules files
+    Given a deployed rule:
+      """
+      $foo = 'baz'
+
+      rule 'set variable' do
+        on_start
+        run do
+          $foo = 'bar'
+          logger.info("$foo set to #{  $foo  }")
+        end
+      end
+      """
+    And a rule:
+      """
+       rule 'read variable' do
+        on_start
+        delay 2.seconds
+        run do
+         logger.info("$foo is bar: #{ $foo == 'bar' }")
+        end
+      end
+      """
+    When I deploy the rule
+    Then It should log 'foo is defined: false' within 5 seconds
