@@ -47,7 +47,7 @@ Feature:  Openhab Gem Support
   Scenario: Instance variables are available between rules
     Given a rule
       """
-      ruleset do
+      rule_set do
 
         rule 'set variable' do
           on_start
@@ -130,6 +130,35 @@ Feature:  Openhab Gem Support
       """
     When I deploy the rule
     Then It should log 'Foo is defined: false' within 5 seconds
+
+  Scenario: Instance variables are shared between same named rule_sets
+    Given a deployed rule:
+      """
+      rule_set 'test' do
+        rule 'set variable' do
+          on_start
+          run do
+            @foo = 'bar'
+            logger.info("@Foo set to #{  @foo  }")
+          end
+        end
+      end
+      """
+    And a rule:
+      """"
+      rule_set 'test' do
+        rule 'read variable' do
+          on_start
+          run do
+           logger.info("@Foo is defined: #{ instance_variable_defined?("@foo") }")
+          end
+        end
+      end
+      """
+    When I deploy the rule
+    Then It should log 'Foo is defined: true' within 5 seconds
+
+
 
   Scenario: Local variables are not shared between rules files
     Given a deployed rule:
