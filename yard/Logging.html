@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Logging
+  
+    &mdash; Documentation by YARD 0.9.25
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Logging";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index (L)</a> &raquo;
+    
+    
+    <span class="title">Logging</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: Logging
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+  <dl>
+    <dt>Included in:</dt>
+    <dd><span class='object_link'><a href="DSLProperty.html" title="DSLProperty (module)">DSLProperty</a></span>, <span class='object_link'><a href="Debug.html" title="Debug (module)">Debug</a></span>, <span class='object_link'><a href="OpenHAB.html" title="OpenHAB (module)">OpenHAB</a></span>, <span class='object_link'><a href="OpenHAB/Core/DSL/Actions.html" title="OpenHAB::Core::DSL::Actions (module)">OpenHAB::Core::DSL::Actions</a></span>, <span class='object_link'><a href="OpenHAB/Core/DSL/MonkeyPatch/Items/ItemExtensions.html" title="OpenHAB::Core::DSL::MonkeyPatch::Items::ItemExtensions (module)">OpenHAB::Core::DSL::MonkeyPatch::Items::ItemExtensions</a></span>, <span class='object_link'><a href="OpenHAB/Core/DSL/MonkeyPatch/Items/Metadata.html" title="OpenHAB::Core::DSL::MonkeyPatch::Items::Metadata (module)">OpenHAB::Core::DSL::MonkeyPatch::Items::Metadata</a></span>, <span class='object_link'><a href="OpenHAB/Core/DSL/Rule/Channel.html" title="OpenHAB::Core::DSL::Rule::Channel (module)">OpenHAB::Core::DSL::Rule::Channel</a></span>, <span class='object_link'><a href="OpenHAB/Core/DSL/Rule/Guard/Guard.html" title="OpenHAB::Core::DSL::Rule::Guard::Guard (class)">OpenHAB::Core::DSL::Rule::Guard::Guard</a></span>, <span class='object_link'><a href="OpenHAB/Core/DSL/Rule/Item.html" title="OpenHAB::Core::DSL::Rule::Item (module)">OpenHAB::Core::DSL::Rule::Item</a></span>, <span class='object_link'><a href="OpenHAB/Core/DSL/Rule/Rule.html" title="OpenHAB::Core::DSL::Rule::Rule (class)">OpenHAB::Core::DSL::Rule::Rule</a></span>, <span class='object_link'><a href="OpenHAB/Core/DSL/Rule/RuleConfig.html" title="OpenHAB::Core::DSL::Rule::RuleConfig (class)">OpenHAB::Core::DSL::Rule::RuleConfig</a></span>, <span class='object_link'><a href="OpenHAB/Core/DSL/Things.html" title="OpenHAB::Core::DSL::Things (module)">OpenHAB::Core::DSL::Things</a></span>, <span class='object_link'><a href="OpenHAB/Core/DSL/Things/Thing.html" title="OpenHAB::Core::DSL::Things::Thing (class)">OpenHAB::Core::DSL::Things::Thing</a></span>, <span class='object_link'><a href="OpenHAB/Core/DSL/Tod/TimeOfDayRangeElement.html" title="OpenHAB::Core::DSL::Tod::TimeOfDayRangeElement (class)">OpenHAB::Core::DSL::Tod::TimeOfDayRangeElement</a></span>, <span class='object_link'><a href="OpenHAB/Core/DSL/Types/Quantity.html" title="OpenHAB::Core::DSL::Types::Quantity (class)">OpenHAB::Core::DSL::Types::Quantity</a></span>, <span class='object_link'><a href="OpenHAB/OSGI.html" title="OpenHAB::OSGI (class)">OpenHAB::OSGI</a></span>, <span class='object_link'><a href="StartupDelay.html" title="StartupDelay (module)">StartupDelay</a></span></dd>
+  </dl>
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/openhab/core/log.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Provides access to the OpenHAB logging using a Ruby logging methods</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Logging/Logger.html" title="Logging::Logger (class)">Logger</a></span>
+    
+  
+</p>
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#included-class_method" title="included (class method)">.<strong>included</strong>(base)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Add logger method to the object that includes this module.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#logger-class_method" title="logger (class method)">.<strong>logger</strong>(name)  &#x21d2; Logger </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Injects a logger into the base class.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#logger_for-class_method" title="logger_for (class method)">.<strong>logger_for</strong>(classname)  &#x21d2; Logger </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Configure a logger for the supplied class name.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#logger-instance_method" title="#logger (instance method)">#<strong>logger</strong>  &#x21d2; Logger </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create a logger for the current class.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="included-class_method">
+  
+    .<strong>included</strong>(base)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Add logger method to the object that includes this module</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>base</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Object to add method to</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+168
+169
+170
+171
+172
+173
+174</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openhab/core/log.rb', line 168</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_included'>included</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='rparen'>)</span>
+  <span class='kw'>class</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_base'>base</span>
+    <span class='kw'>def</span> <span class='id identifier rubyid_logger'><span class='object_link'><a href="#logger-class_method" title="Logging.logger (method)">logger</a></span></span>
+      <span class='const'><span class='object_link'><a href="" title="Logging (module)">Logging</a></span></span><span class='period'>.</span><span class='id identifier rubyid_logger'><span class='object_link'><a href="#logger-class_method" title="Logging.logger (method)">logger</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="logger-class_method">
+  
+    .<strong>logger</strong>(name)  &#x21d2; <tt><span class='object_link'><a href="Logging/Logger.html" title="Logging::Logger (class)">Logger</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Injects a logger into the base class</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>of the logger</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Logging/Logger.html" title="Logging::Logger (class)">Logger</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>for the supplied name</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+112
+113
+114
+115</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openhab/core/log.rb', line 112</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_logger'>logger</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_name'>name</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
+  <span class='ivar'>@loggers</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="" title="Logging (module)">Logging</a></span></span><span class='period'>.</span><span class='id identifier rubyid_logger_for'><span class='object_link'><a href="#logger_for-class_method" title="Logging.logger_for (method)">logger_for</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="logger_for-class_method">
+  
+    .<strong>logger_for</strong>(classname)  &#x21d2; <tt><span class='object_link'><a href="Logging/Logger.html" title="Logging::Logger (class)">Logger</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Configure a logger for the supplied class name</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>classname</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>to configure logger for</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Logging/Logger.html" title="Logging::Logger (class)">Logger</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>for the supplied classname</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+124
+125
+126</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openhab/core/log.rb', line 124</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_logger_for'>logger_for</span><span class='lparen'>(</span><span class='id identifier rubyid_classname'>classname</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_configure_logger_for'>configure_logger_for</span><span class='lparen'>(</span><span class='id identifier rubyid_classname'>classname</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="logger-instance_method">
+  
+    #<strong>logger</strong>  &#x21d2; <tt><span class='object_link'><a href="Logging/Logger.html" title="Logging::Logger (class)">Logger</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create a logger for the current class</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Logging/Logger.html" title="Logging::Logger (class)">Logger</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>for the current class</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+100
+101
+102</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/openhab/core/log.rb', line 100</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_logger'><span class='object_link'><a href="#logger-class_method" title="Logging.logger (method)">logger</a></span></span>
+  <span class='const'><span class='object_link'><a href="" title="Logging (module)">Logging</a></span></span><span class='period'>.</span><span class='id identifier rubyid_logger'><span class='object_link'><a href="#logger-class_method" title="Logging.logger (method)">logger</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Mon Feb  1 13:47:31 2021 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.25 (ruby-2.5.8).
+</div>
+
+    </div>
+  </body>
+</html>
